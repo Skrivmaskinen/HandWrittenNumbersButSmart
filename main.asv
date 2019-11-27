@@ -1,10 +1,9 @@
 %% Handwritten number classification
 load('uspsDigits.mat')
 
-imshow(testDigits(:, :, 13), 'InitialMagnification', 'fit')
-%EuclideanDistance(testDigits(:, :, 1), testDigits(:, :, 2))
+imshow(testDigits(:, :, 1), 'InitialMagnification', 'fit')
+EuclideanDistance(testDigits(:, :, 1), testDigits(:, :, 2))
 
-%%
 prediction = zeros(size(testAns));
 for test_id = 1:2007 %2007
     tested_image = testDigits(:, :, test_id);
@@ -24,7 +23,7 @@ for test_id = 1:2007 %2007
 end
 
 %%
-result = (testAns(1:2007) == prediction(1:2007));
+result = (trainAns(1:2007) == prediction(1:2007));
 
-sum(result)/2007 % 94.37 procent correct
+sum(result)/2007
 
