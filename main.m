@@ -37,7 +37,7 @@ Tt(:,:,:) = TransformationTensor(testzip);
 
 %% Dumb prediction. Takes ages
 
-span = 1:3;
+span = 1:100;
 
 prediction = zeros(size(span));
 for test_id = span %2007
@@ -47,7 +47,9 @@ for test_id = span %2007
     closest_value = inf('double');
     
     for train_id = 1:7291
+        tic
         train_dist = tangentDiff( tested_image, azip(:, :, train_id), Tt(:,:,test_id),  Tp(:,:,train_id) );
+        toc
         %train_dist = EuclideanDistance( tested_image, azip(:, :, train_id) );
         if (closest_value > train_dist)
             closest_value = train_dist;
@@ -60,7 +62,8 @@ end
 %% How good is dumb prediction?
 result = (dtest(span) == prediction);
 
-sum(result)/3 % 94.37 procent correct
+sum(result)/100
+% 94.37 procent correct
 
 %% 
 
