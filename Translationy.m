@@ -1,8 +1,6 @@
-function [DP] = Translationy(point)
-
-   shifted = zeros(20);
-   shifted(2:20,:) = point(1:19,:);
-   DP = point(:, :) - shifted;
-   DP = DP(:);
+function [transformationVector] = TranslationY(inPicture)
+   transformationVector = inPicture;
+   transformationVector(2:20, :) =- inPicture(1:19, :);
+   transformationVector = transformationVector(:);
 end
 

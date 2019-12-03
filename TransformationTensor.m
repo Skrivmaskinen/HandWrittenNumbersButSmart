@@ -1,4 +1,4 @@
-function [ bread ] = TransformationTensor(pointTensor )
+function [ bread ] = Transformations(pointTensor )
 
     bread = zeros(size(pointTensor, 1)^2,1, length(pointTensor));
     for i = 1:length(pointTensor)    

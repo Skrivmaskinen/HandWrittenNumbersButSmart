@@ -1,4 +1,4 @@
-function [DP] = Translation(point)
+function [DP] = TranslationX(point)
 
    shifted = zeros(20);
    shifted(:, 2:20) = point(:, 1:19);
