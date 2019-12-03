@@ -30,7 +30,6 @@ Tt = Transformations(testDigit);
 span = 1:2007;
 
 prediction = zeros(size(span));
-tic
 for test_id = span 
     
     tested_image = testDigit(:, :, test_id);
@@ -39,19 +38,18 @@ for test_id = span
     closest_value = inf('double');
     
     for train_id = 1:7291
-       
+        %tic
         train_dist = tangentDiff( tested_image, trainingDigit(:, :, train_id), Tt(:,:,test_id),  Tp(:,:,train_id) );
-       
+        %toc
         %train_dist = EuclideanDistance( tested_image, trainingDigit(:, :, train_id) );
         if (closest_value > train_dist)
             closest_value = train_dist;
             closest_id    = train_id;
         end    
     end
-    toc
     prediction(test_id) = trainingAnswear(closest_id);
 end
-toc
+
 %% How good is dumb prediction?
 result = (testAnswear(span) == prediction);
 

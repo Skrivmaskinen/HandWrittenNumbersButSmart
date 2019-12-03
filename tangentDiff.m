@@ -1,4 +1,4 @@
-function [ out_distance ] = TangentDiff( p, e, Tp, Te )
+function [ out_distance ] = tangentDiff( p, e, Tp, Te )
 % Get the tangent distance from point p to e.
 %   Detailed explanation goes here
     A = [-Tp Te];

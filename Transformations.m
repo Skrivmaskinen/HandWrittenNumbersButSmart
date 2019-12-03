@@ -6,7 +6,8 @@ function [ transformationMatrix ] = Transformations(inPictures )
     Y = -9:1:10;
     X = e*X;
     Y = e*Y;
-    transformationMatrix = zeros(size(inPictures, 1)^2, 1, length(inPictures));
+    Y = Y';
+    transformationMatrix = zeros(size(inPictures, 1)^2, 7, length(inPictures));
 %     for i = 1:length(inPictures)    
 %         transformationMatrix(:,1,i) = TranslationX(inPictures(:,:,i));
 %         transformationMatrix(:,2,i) = TranslationY(inPictures(:,:,i));
@@ -23,16 +24,20 @@ function [ transformationMatrix ] = Transformations(inPictures )
     
     for i = 1:length(inPictures)  
         Px_current = Px(:, :, i); 
-        Py_current = Px(:, :, i);
+        Py_current = Py(:, :, i);
         
         XPx_current = XPx(:, :, i);
         YPx_current = YPx(:, :, i);
         XPy_current = XPy(:, :, i);
         YPy_current = YPy(:, :, i);
         
-        transformationMatrix(:, 1, i) = Px_current(:);
-        transformationMatrix(:, 2, i) = Px_current(:); 
-        %TODO: the rest
+        transformationMatrix(:, 1, i) = Px_current(:); %translation x
+        transformationMatrix(:, 2, i) = Py_current(:); %translation y
+        transformationMatrix(:, 3, i) = YPx_current(:) - XPy_current(:); %rotation
+        transformationMatrix(:, 4, i) = XPx_current(:) + YPy_current(:); %scaling
+        transformationMatrix(:, 5, i) = XPx_current(:) - YPy_current(:); % parallel hyperbolic transformation
+        transformationMatrix(:, 6, i) = YPx_current(:) + XPy_current(:); % diagonal hyperbolic transformation
+        transformationMatrix(:, 7, i) = Px_current(:).^2 + Py_current(:).^2; % thickening 
     end
     
 end
