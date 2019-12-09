@@ -1,11 +1,11 @@
 function [ transformationMatrix ] = Transformations(inPictures )
 % inPictures(x, y, picture_id)
 
-    e = ones(20, 1);
+    oneVector = ones(20, 1);
     X = -9:1:10;
     Y = -9:1:10;
-    X = e*X;
-    Y = e*Y;
+    X = oneVector*X;
+    Y = oneVector*Y;
     Y = Y';
     transformationMatrix = zeros(size(inPictures, 1)^2, 7, length(inPictures));
 %     for i = 1:length(inPictures)    
