@@ -24,7 +24,6 @@ Tp = Transformations(trainingDigit);
 %T-matrix for test data
 Tt = Transformations(testDigit);
 
-
 %% Smart prediction. Takes ~1 second / digit
 % maximum: 2007
 span = 1:2007;
@@ -34,7 +33,7 @@ tic
 for test_id = span 
     
     tested_image = testDigit(:, :, test_id);
-   
+    
     closest_id = 0;
     closest_value = inf('double');
     
@@ -48,6 +47,7 @@ for test_id = span
             closest_id    = train_id;
         end    
     end
+    test_id
     toc
     prediction(test_id) = trainingAnswear(closest_id);
 end

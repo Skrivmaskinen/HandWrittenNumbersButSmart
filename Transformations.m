@@ -2,8 +2,8 @@ function [ transformationMatrix ] = Transformations(inPictures )
 % inPictures(x, y, picture_id)
 
     oneVector = ones(20, 1);
-    X = -9:1:10;
-    Y = -9:1:10;
+    X = (-9:1:10)/ 10;
+    Y = (-9:1:10) / 10;
     X = oneVector*X;
     Y = oneVector*Y;
     Y = Y';
@@ -16,7 +16,7 @@ function [ transformationMatrix ] = Transformations(inPictures )
 % %         transformationMatrix(:,5,i) = Smalling(inPictures(:,:,i));
 %         
 %     end 
-    [Px,Py] = TranslationX(inPictures); 
+    [Py,Px] = TranslationX(inPictures); 
     XPx = X.*Px(1:20, 1:20, :);
     YPx = Y.*Px(1:20, 1:20, :);
     XPy = X.*Py(1:20, 1:20, :);
